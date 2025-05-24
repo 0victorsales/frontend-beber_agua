@@ -1,29 +1,38 @@
 import { Pagina, BemVindo, Header, Botao, ItensEsquerda,Container} from './styles.ts';
-import Titulo from '../../components/tituloComponent/index.jsx';
 import FormularioConsumo from './components/FormularioConsumo/index.jsx';
 import RegistroConsumoHoje from './components/RegistrosHoje/index.jsx';
+import Progresso from './components/ProgressoHoje/index.jsx';
 import { useState, useEffect } from "react";
-import { listarConsumosDia } from '../../services/api';
+import { listarConsumosDia, obterProgressoHoje  } from '../../services/api';
 
 function ConsumoDiario() {
   const [registros, setRegistros] = useState([]);
+  const [progresso, setProgresso] = useState(null);
 
   useEffect(() => {
-    const carregarRegistros = async () => {
+    const carregarDados = async () => {
       try {
-        const response = await listarConsumosDia("Victor Henrique Sales");
-        setRegistros(response.consumos);
+        const [resProgresso, resRegistros] = await Promise.all([
+          obterProgressoHoje("Victor Henrique Sales"),
+          listarConsumosDia("Victor Henrique Sales")
+        ]);
+
+        setProgresso(resProgresso.dados);
+        setRegistros(resRegistros.consumos);
       } catch (error) {
-        console.error("Erro ao buscar registros:", error);
+        console.error("Erro ao buscar dados iniciais:", error);
       }
     };
 
-    carregarRegistros();
+    carregarDados();
   }, []);
 
-  const adicionarRegistroLocal = (novoRegistro) => {
+  const adicionarRegistroLocal = (novoRegistro,progressoAtualizado) => {
     setRegistros((registrosAntigos) => [...registrosAntigos, novoRegistro]);
+    setProgresso(progressoAtualizado); 
   };
+
+  
 
 
   return (
@@ -38,7 +47,7 @@ function ConsumoDiario() {
       </Header>
 
       <Container>
-        <Titulo icone ='Target' titulo='Progresso de Hoje'/>
+        {progresso && <Progresso progresso={progresso} />}
       </Container>
 
       <Container>

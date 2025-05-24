@@ -32,7 +32,7 @@ function FormularioConsumo({ onRegistroAdicionado }) {
         consumo_ml: resposta.dados.consumo_ml,
         horario: horarioFormatado
       };
-      onRegistroAdicionado(novoRegistro);
+      onRegistroAdicionado(novoRegistro,resposta.dados);
 
     } catch (error) {
       alert("Erro ao registrar consumo. Veja o console para mais detalhes!");

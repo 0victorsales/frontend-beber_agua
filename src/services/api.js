@@ -27,3 +27,11 @@ export const listarConsumosDia = async (nome_usuario) => {
     throw error;
   }
 };
+
+
+export const obterProgressoHoje = async (nome_usuario) => {
+  const response = await axios.get(`${URL_BACKEND}/progresso-hoje`, {
+    params: { nome_usuario }
+  });
+  return response.data;
+};
