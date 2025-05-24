@@ -1,0 +1,17 @@
+ 
+
+-os usuários 
+	podem registrar quantos mLs de água já beberam ao longo dos dias
+	
+	e se estão dentro de uma meta diária pré-estabelecida. 
+		A meta diária pode ser definida a partir do peso da pessoa em Kg, cada quilo deve 
+  		Ex: pessoa pesa 70kg -> 35 => 2450 mLs por dia de meta
+
+Na tela 1: a pessoa pode se cadastrar com seu nome e peso em Kg. 
+
+Na tela 2: a pessoa pode ver quantos mL já tomou 
+	E registrar que tomou uma quantidade X de água. Depois de fazer o registro 
+		ela consegue visualizar os dados do momento atual do dia (quantos mL já bebeu, quantos mL faltam, se já bateu a meta diária, etc.) 
+
+
+Na tela 3: a pessoa pode ver o registro dos dias que já cadastrou no app ao longo do tempo.
