@@ -16,25 +16,55 @@ export const Pagina = styled.div`
 
 
 export const Header = styled.header`
-  background-color: #ffffff;
   color: #333;
   padding: 20px;
-  width: 60%;
-  margin: 0 auto; / 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;  
-  text-align: center;  
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-
+export const ItensEsquerda = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
 
 
 
 export const BemVindo = styled.div`
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
+  color: black;
+  font-weight: bold;     
+  font-size: 24px;        
 `;
 
 
+export const Botao = styled.button`
+  padding: 10px 20px;
+  background-color: #fff;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+`;
+
+export const Container = styled.div`
+  padding: 10px 20px;
+  width: 40%;
+  background-color: #fff;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin-top: 10px
+`;
+
+
+
+
+ 
