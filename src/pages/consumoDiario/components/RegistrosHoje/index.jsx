@@ -1,25 +1,8 @@
 import Titulo from "../../../../components/tituloComponent";
-import { listarConsumosDia } from "../../../../services/api";
-import { useEffect, useState } from "react";
-
 import { ListaRegistros, RegistroHoje } from "./styles.ts";
 
-function RegistroConsumoHoje() {
+function RegistroConsumoHoje({registros}) {
 
-    const [registros, setRegistros] = useState([]);
-
-    useEffect(() => {
-    const fetchRegistros = async () => {
-      try {
-        const response = await listarConsumosDia("Victor Henrique Sales");
-        setRegistros(response.consumos);
-      } catch (error) {
-        console.error("Erro ao buscar registros:", error);
-      }
-    };
-
-    fetchRegistros();
-  }, []);
 
   return (
     <div>

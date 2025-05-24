@@ -5,7 +5,7 @@ import { inserirConsumo } from '../../../../services/api.js';
 import { useState } from 'react';
 import Titulo from '../../../../components/tituloComponent/index.jsx'
 
-function FormularioConsumo() {
+function FormularioConsumo({ onRegistroAdicionado }) {
   const [quantidade, setQuantidade] = useState("");
 
 
@@ -25,6 +25,15 @@ function FormularioConsumo() {
       console.log("Resposta do backend:", resposta);
       alert("Consumo registrado com sucesso!");
       setQuantidade("");  
+
+      const horarioCompleto = resposta.dados.horario;
+      const horarioFormatado = horarioCompleto.substring(0, 5);
+      const novoRegistro = {
+        consumo_ml: resposta.dados.consumo_ml,
+        horario: horarioFormatado
+      };
+      onRegistroAdicionado(novoRegistro);
+
     } catch (error) {
       alert("Erro ao registrar consumo. Veja o console para mais detalhes!");
     }
