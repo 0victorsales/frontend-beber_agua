@@ -1,6 +1,7 @@
 import { Pagina, BemVindo, Header, Botao, ItensEsquerda,Container} from './styles.ts';
- 
+import Titulo from '../../components/tituloComponent/index.jsx';
 import FormularioConsumo from './components/FormularioConsumo/index.jsx';
+import RegistroConsumoHoje from './components/RegistrosHoje/index.jsx';
 
 function ConsumoDiario() {
 
@@ -20,11 +21,15 @@ function ConsumoDiario() {
       </Header>
 
       <Container>
-        <p>Progresso de Hoje</p>
+        <Titulo icone ='Target' titulo='Progresso de Hoje'/>
       </Container>
 
       <Container>
          <FormularioConsumo/>
+      </Container>
+
+      <Container>
+        <RegistroConsumoHoje/>
       </Container>
 
 
