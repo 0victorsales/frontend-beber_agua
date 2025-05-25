@@ -1,9 +1,10 @@
-import { Pagina, BemVindo, Header, Botao, ItensEsquerda,Container} from './styles.ts';
+import { Pagina, BemVindo, Header, ItensEsquerda,Container} from './styles.ts';
 import FormularioConsumo from './components/FormularioConsumo/index.jsx';
 import RegistroConsumoHoje from './components/RegistrosHoje/index.jsx';
 import Progresso from './components/ProgressoHoje/index.jsx';
 import { useState, useEffect } from "react";
 import { listarConsumosDia, obterProgressoHoje  } from '../../services/api';
+import BotaoCustomizado from '../../components/botaoPersonalizado/index.jsx';
 
 function ConsumoDiario() {
   const [registros, setRegistros] = useState([]);
@@ -43,7 +44,7 @@ function ConsumoDiario() {
           <p>Como está sua hidratação hoje?</p>
         </ItensEsquerda>
 
-        <Botao>Histórico</Botao>
+        <BotaoCustomizado icone="History" texto="Histórico"/>
       </Header>
 
       <Container>

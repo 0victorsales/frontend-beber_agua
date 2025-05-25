@@ -4,7 +4,6 @@ export const ProgressoContainer = styled.div`
   background-color: #fff;
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   text-align: center;
 `;
 

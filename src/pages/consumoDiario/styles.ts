@@ -40,16 +40,6 @@ export const BemVindo = styled.div`
 `;
 
 
-export const Botao = styled.button`
-  padding: 10px 20px;
-  background-color: #fff;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 50px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-`;
 
 export const Container = styled.div`
   padding: 10px 20px;
@@ -58,7 +48,6 @@ export const Container = styled.div`
   color: black;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   margin: 0 auto;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   margin-top: 10px
