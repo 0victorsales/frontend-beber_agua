@@ -35,3 +35,18 @@ export const obterProgressoHoje = async (nome_usuario) => {
   });
   return response.data;
 };
+
+export const obterHistoricoDia = async (nome_usuario, data) => {
+  const dataFormatada = data.toISOString().split("T")[0]; 
+  const response = await axios.get(`${URL_BACKEND}/historico-dia`, {
+    params: { nome_usuario, data: dataFormatada },
+  });
+  return response.data;
+};
+
+export const obterDiasComRegistros = async (nome_usuario) => {
+  const response = await axios.get(`${URL_BACKEND}/dias-com-registros`, {
+    params: { nome_usuario }
+  });
+  return response.data;
+};
