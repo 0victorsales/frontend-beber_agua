@@ -1,10 +1,11 @@
-import { Pagina, BemVindo, Header, ItensEsquerda,Container} from './styles.ts';
+import { Pagina, Header, ItensEsquerda,Container} from './styles.ts';
 import FormularioConsumo from './components/FormularioConsumo/index.jsx';
 import RegistroConsumoHoje from './components/RegistrosHoje/index.jsx';
 import Progresso from './components/ProgressoHoje/index.jsx';
 import { useState, useEffect } from "react";
 import { listarConsumosDia, obterProgressoHoje  } from '../../services/api';
 import BotaoCustomizado from '../../components/botaoPersonalizado/index.jsx';
+import TituloPagina from '../../components/tituloPersonalizado/index.jsx';
 
 function ConsumoDiario() {
   const [registros, setRegistros] = useState([]);
@@ -40,8 +41,13 @@ function ConsumoDiario() {
     <Pagina>
       <Header>
         <ItensEsquerda>
-          <BemVindo>Olá, Victor Henrique Sales!</BemVindo>
-          <p>Como está sua hidratação hoje?</p>
+     
+          <TituloPagina
+            titulo="Olá, Victor Henrique Sales!"
+            subtitulo="Como está sua hidratação hoje?"
+            icone="Droplets"
+          />
+
         </ItensEsquerda>
 
         <BotaoCustomizado icone="History" texto="Histórico"/>

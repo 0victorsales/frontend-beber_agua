@@ -33,14 +33,6 @@ export const ItensEsquerda = styled.div`
 
 
 
-export const BemVindo = styled.div`
-  color: black;
-  font-weight: bold;     
-  font-size: 24px;        
-`;
-
-
-
 export const Container = styled.div`
   padding: 10px 20px;
   width: 40%;
