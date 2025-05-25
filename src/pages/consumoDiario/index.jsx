@@ -6,10 +6,12 @@ import { useState, useEffect } from "react";
 import { listarConsumosDia, obterProgressoHoje  } from '../../services/api';
 import BotaoCustomizado from '../../components/botaoPersonalizado/index.jsx';
 import TituloPagina from '../../components/tituloPersonalizado/index.jsx';
+import { useNavigate } from "react-router-dom";
 
 function ConsumoDiario() {
   const [registros, setRegistros] = useState([]);
   const [progresso, setProgresso] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const carregarDados = async () => {
@@ -50,7 +52,11 @@ function ConsumoDiario() {
 
         </ItensEsquerda>
 
-        <BotaoCustomizado icone="History" texto="Histórico"/>
+        <BotaoCustomizado
+          icone="History"
+          texto="Histórico"
+          onClick={() => navigate("/historico")}  
+        />
       </Header>
 
       <Container>
