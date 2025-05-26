@@ -16,10 +16,12 @@ export const FormularioContainer = styled.div`
   padding: 2rem;
   width: 100%;
   max-width: 400px;
+  min-height: 450px;  
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   text-align: center;
+  justify-content: center;  
 `;
 
 export const Label = styled.label`
@@ -46,8 +48,8 @@ export const Input = styled.input`
 `;
 
 export const Botao = styled.button`
-  background-color: #2563eb;
-  color: #ffffff;
+  background-color: #2563eb;  
+  color: #ffffff;  
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 8px;

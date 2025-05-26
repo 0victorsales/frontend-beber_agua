@@ -50,3 +50,17 @@ export const obterDiasComRegistros = async (nome_usuario) => {
   });
   return response.data;
 };
+
+
+export const registrarMeta = async (nome_usuario, peso_kg) => {
+  try {
+    const response = await axios.post(`${URL_BACKEND}/meta`, {
+      nome_usuario,
+      peso_kg
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao registrar meta:", error.response?.data || error.message);
+    throw error;
+  }
+};
