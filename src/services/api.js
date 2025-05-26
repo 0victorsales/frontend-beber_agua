@@ -4,7 +4,7 @@ const URL_BACKEND = "http://127.0.0.1:8000";
 
 export const inserirConsumo = async (nome_usuario, consumo_ml) => {
   try {
-    const response = await axios.post(`${URL_BACKEND}/inserir-consumo`, {
+    const response = await axios.post(`${URL_BACKEND}/consumo`, {
       nome_usuario,
       consumo_ml
     });
@@ -30,7 +30,7 @@ export const listarConsumosDia = async (nome_usuario) => {
 
 
 export const obterProgressoHoje = async (nome_usuario) => {
-  const response = await axios.get(`${URL_BACKEND}/progresso-hoje`, {
+  const response = await axios.get(`${URL_BACKEND}/progresso`, {
     params: { nome_usuario }
   });
   return response.data;
@@ -38,14 +38,14 @@ export const obterProgressoHoje = async (nome_usuario) => {
 
 export const obterHistoricoDia = async (nome_usuario, data) => {
   const dataFormatada = data.toISOString().split("T")[0]; 
-  const response = await axios.get(`${URL_BACKEND}/historico-dia`, {
+  const response = await axios.get(`${URL_BACKEND}/historico`, {
     params: { nome_usuario, data: dataFormatada },
   });
   return response.data;
 };
 
 export const obterDiasComRegistros = async (nome_usuario) => {
-  const response = await axios.get(`${URL_BACKEND}/dias-com-registros`, {
+  const response = await axios.get(`${URL_BACKEND}/registros`, {
     params: { nome_usuario }
   });
   return response.data;

@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# Projeto React.js - Consumo Diário
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto **React.js** que permite aos usuários registrar seu consumo diário de água, acompanhar o progresso e consultar registros detalhados. Ele utiliza componentes reutilizáveis e integração com um backend para gerenciar dados.
 
-## Available Scripts
+ 
 
-In the project directory, you can run:
+## Página de Consumo Diário (`pages/consumoDiario/index.jsx`)
 
-### `npm start`
+Esta página é o ponto principal de visualização do progresso e inserção de consumo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **useEffect**: Carrega dados iniciais de progresso e registros.
+- **adicionarRegistroLocal**: Atualiza a lista de registros localmente e o progresso após novo registro.
+- **Botões**:
+  - **Histórico**: Navega para a tela de histórico.
+  - **Sair**: Navega para a tela de cadastro.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Integração com Backend (services/api.js)
+- listarConsumosDia
 
-### `npm test`
+- obterProgressoHoje
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- inserirConsumo
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Componentes Locais
+## Botões de ML (BotoesML/index.jsx)
+- Renderiza botões rápidos de ml para facilitar inserções no consumo.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Formulário de Consumo (FormularioConsumo/index.jsx)
+- Função registerML: Envia dados ao backend.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- registerByButtonML: Atalho para envio pelos botões rápidos.
 
-### `npm run eject`
+- Props: onRegistroAdicionado - callback para atualizar lista de registros.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Progresso do Dia (ProgressoHoje/index.jsx)
+- Consumo total
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Meta do dia
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Litros restantes
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Porcentagem da meta atingida
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#  Componentes Globais
+- BotaoCustomizado: Botão reutilizável com ícone e texto.
 
-### Code Splitting
+- TituloPagina: Exibe título e subtítulo, utilizado no topo das telas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Titulo: Componente de título com ícone para uso em seções menores.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+# Tela de Cadastro
+A tela de **Cadastro** permite que o usuário registre seu nome e peso, enviando os dados para o backend que calcula automaticamente a meta de consumo de água com base nesses dados. Após o cadastro, os dados são salvos localmente no navegador e o usuário é redirecionado para a página de consumo diário.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+# Tela de Histórico
+A tela **Histórico** permite que o usuário visualize os registros de consumo de água em cada dia. Utiliza um componente de calendário customizado para selecionar a data e exibe detalhes como o total de litros consumidos, meta, percentual atingido e registros individuais.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Estados
+- dataSelecionada: Data atual selecionada.
 
-### Deployment
+- registrosDia: Lista dos consumos do dia.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- progressoDia: Detalhes do progresso.
 
-### `npm run build` fails to minify
+- diasComRegistros: Dias que têm registros no banco.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- nomeUsuario: Recuperado do localStorage.
+
+##  Lógica de carregamento
+- useEffect: Executa toda vez que dataSelecionada ou nomeUsuario mudam.
+
+## Chama as funções
+- carregarHistorico: Busca dados de consumo e progresso para o dia selecionado.
+
+- carregarDiasComRegistros: Obtém os dias que têm registros para colorir no calendário.
+
+
+## Componentes Utilizados
+### TituloPagina
+- Exibe o título da página (“Histórico”) e um subtítulo explicativo.
+
+### CalendarioCustomizado
+- Componente de calendário personalizado, usado para selecionar o dia.
+
+### Titulo
+- Usado na lateral direita para exibir o título “Hoje” com ícone.
+
+## Componente CalendarioCustomizado
+
+### Estados
+- dataAtual: Mês e ano atual do calendário.
+
+### Funções
+- irParaMesAnterior / irParaProximoMes: Navega entre os meses.
+
+- formatarDataParaString: Formata a data em YYYY-MM-DD.
+
+- obterRegistroDoDia: Verifica se há registro para um dia específico.
+
+### Verificações
+- verificarSeEhHoje: Se o dia é o atual.
+
+- verificarSeEhDoMesAtual: Se o dia faz parte do mês em exibição.
+
+- verificarSeEhSelecionado: Se o dia é o selecionado.
+
+# Tecnologias e Bibliotecas
+- React.js
+
+- Styled-components: para estilos modularizados.
+
+- React Router: para navegação entre páginas.
+
+- Axios: para comunicação com o backend.
