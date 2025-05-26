@@ -13,12 +13,14 @@ function ConsumoDiario() {
   const [progresso, setProgresso] = useState(null);
   const navigate = useNavigate();
 
+  const nomeUsuario = localStorage.getItem("nome_usuario") || "Usuário";
+
   useEffect(() => {
     const carregarDados = async () => {
       try {
         const [resProgresso, resRegistros] = await Promise.all([
-          obterProgressoHoje("Victor Henrique Sales"),
-          listarConsumosDia("Victor Henrique Sales")
+          obterProgressoHoje(nomeUsuario),
+          listarConsumosDia(nomeUsuario)
         ]);
 
         setProgresso(resProgresso.dados);
@@ -29,7 +31,7 @@ function ConsumoDiario() {
     };
 
     carregarDados();
-  }, []);
+  }, [nomeUsuario]);
 
   const adicionarRegistroLocal = (novoRegistro,progressoAtualizado) => {
     setRegistros((registrosAntigos) => [...registrosAntigos, novoRegistro]);
@@ -45,7 +47,7 @@ function ConsumoDiario() {
         <ItensEsquerda>
      
           <TituloPagina
-            titulo="Olá, Victor Henrique Sales!"
+            titulo={`Olá, ${nomeUsuario}!`}
             subtitulo="Como está sua hidratação hoje?"
             icone="Droplets"
           />

@@ -7,6 +7,7 @@ import Titulo from '../../../../components/tituloComponent/index.jsx'
 
 function FormularioConsumo({ onRegistroAdicionado }) {
   const [quantidade, setQuantidade] = useState("");
+  const nomeUsuario = localStorage.getItem("nome_usuario") || "Usuário";
 
 
  const registerByButtonML = (e) => {
@@ -21,7 +22,7 @@ function FormularioConsumo({ onRegistroAdicionado }) {
     }
 
     try {
-      const resposta = await inserirConsumo("Victor Henrique Sales", Number(quantidadeML));
+      const resposta = await inserirConsumo(nomeUsuario, Number(quantidadeML));
       console.log("Resposta do backend:", resposta);
       alert("Consumo registrado com sucesso!");
       setQuantidade("");  

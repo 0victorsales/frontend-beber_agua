@@ -11,11 +11,12 @@ function Historico() {
   const [registrosDia, setRegistrosDia] = useState([]);
   const [progressoDia, setProgressoDia] = useState(null);
   const [diasComRegistros, setDiasComRegistros] = useState([]);
+  const nomeUsuario = localStorage.getItem("nome_usuario") || "Usuário";
 
   useEffect(() => {
     const carregarHistorico = async () => {
       try {
-        const response = await obterHistoricoDia("Victor Henrique Sales", dataSelecionada);
+        const response = await obterHistoricoDia(nomeUsuario, dataSelecionada);
         setRegistrosDia(response.registros);
         setProgressoDia(response.progresso);
       } catch (error) {
@@ -25,7 +26,7 @@ function Historico() {
 
      const carregarDiasComRegistros = async () => {
       try {
-        const response = await obterDiasComRegistros("Victor Henrique Sales");
+        const response = await obterDiasComRegistros(nomeUsuario);
         setDiasComRegistros(response.dias);  
       } catch (error) {
         console.error("Erro ao carregar dias com registros:", error);
@@ -34,7 +35,7 @@ function Historico() {
 
     carregarDiasComRegistros();
     carregarHistorico();
-  }, [dataSelecionada]);
+  }, [dataSelecionada,nomeUsuario]);
 
   return (
   <Pagina>
