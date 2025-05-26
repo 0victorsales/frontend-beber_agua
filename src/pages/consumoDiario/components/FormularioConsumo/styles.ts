@@ -11,7 +11,7 @@ export const InputQuantidade = styled.input`
 `;
 
 export const BotaoAdicionar = styled.button`
-  background-color: #d3d3d3; /* Cinza claro */
+  background-color: #d3d3d3; 
   color: #333;
   border: none;
   padding: 8px 16px;

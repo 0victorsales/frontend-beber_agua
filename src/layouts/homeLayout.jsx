@@ -5,7 +5,6 @@ function HomeLayout() {
   return (
     <div>
       <Outlet />
-      {/* <h1>Home layout</h1> */}
     </div>
   );
 }
