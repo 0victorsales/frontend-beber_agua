@@ -23,7 +23,13 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .botoes-direita {
+    display: flex;
+    gap: 8px;  
+  }
 `;
+
 
 export const ItensEsquerda = styled.div`
   display: flex;

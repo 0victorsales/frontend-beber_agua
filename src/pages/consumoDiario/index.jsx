@@ -52,11 +52,19 @@ function ConsumoDiario() {
 
         </ItensEsquerda>
 
-        <BotaoCustomizado
-          icone="History"
-          texto="Histórico"
-          onClick={() => navigate("/historico")}  
-        />
+         <div className="botoes-direita">
+            <BotaoCustomizado
+              icone="History"
+              texto="Histórico"
+              onClick={() => navigate("/historico")}
+            />
+
+            <BotaoCustomizado
+              icone="LogOut"  
+              texto="Sair"
+              onClick={() => navigate("/cadastro")}
+            />
+          </div>
       </Header>
 
       <Container>
